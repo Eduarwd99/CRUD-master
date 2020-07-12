@@ -16,12 +16,18 @@ namespace CRUD
         {
             InitializeComponent();
         }
-
         private void FrmIngresar_Load(object sender, EventArgs e)
         {
 
         }
+        private void cmbSexo_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
+        private void dgPersonas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             TIC.DatosPersonas personas = new TIC.DatosPersonas();
@@ -29,28 +35,15 @@ namespace CRUD
             personas.Apellidos = txtApellidos.Text;
             personas.Nombres = txtNombres.Text;
             personas.Sexo = cmbSexo.Text;
-            personas.FechaNacimineto = dtFechaNacimineto.Value;
+            personas.FechaNacimiento = dtFechaNacimineto.Value;
             personas.Correo = txtCorreo.Text;
             personas.Estatura = int.Parse(txtEstatura.Text);
-            personas.Peso = int.Parse(txtPeso.Text);
+            personas.Peso = decimal.Parse(txtPeso.Text);
             int x = TIC.DatoPersonasDAO.creacion(personas);
             if (x > 0)
-
                 MessageBox.Show("Registro Agregado..");
-
             else
                 MessageBox.Show("No se pudo agregar el registro");
-
-        }
-
-        private void cmbSexo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgPersonas_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }
