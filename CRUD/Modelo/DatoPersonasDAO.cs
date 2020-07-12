@@ -36,6 +36,5 @@ namespace TIC
             conn.Close();
             return x;
         }
-         
     }
 }

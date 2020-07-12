@@ -16,6 +16,5 @@ namespace TIC
         public string Correo { get; set; }
         public int Estatura { get; set; }
         public decimal Peso { get; set; }
-
     }
 }

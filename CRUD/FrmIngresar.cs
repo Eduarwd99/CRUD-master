@@ -42,5 +42,15 @@ namespace CRUD
                 MessageBox.Show("No se pudo agregar el registro");
 
         }
+
+        private void cmbSexo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgPersonas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
