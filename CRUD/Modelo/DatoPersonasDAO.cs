@@ -41,6 +41,26 @@ namespace TIC
             conn.Close();
             return x;
         }
+        public static int delete(String cedulaBorrar)
+        {
+            //Crear el metodo borrar usando como guia el metodo usar
+            //La sentencia sql es la siguiente:
+            //"delete from NombreTable where campo=@campo
+            //Definir la interfaz de usuario para probar este metodo
+            //txt ingresa la cedula a borrar y luego se borra  
+
+            int y = 0;
+            SqlConnection conn = new SqlConnection(cadenaConexion);
+            string sql = " delete from Datos_Persona " + "where Cedula = "+ cedulaBorrar;
+            SqlCommand comando = new SqlCommand(sql, conn);
+
+            comando.CommandType = System.Data.CommandType.Text;
+            conn.Open();
+            if (comando.ExecuteNonQuery() == 1)
+                y = 1;//comando.ExecuteNonQuery(); // Se borro
+            conn.Close();
+            return y;
+        }
         public static DataTable getAll()
         {
             //1. Definir y configurar conexion
@@ -69,25 +89,15 @@ namespace TIC
             //Definir un adaptador de datos (puente que permite pasar datos del daatatable a la BDD)
             //El adaptador abre y cierra la sesion al sacar datos
             SqlDataAdapter ad = new SqlDataAdapter(sql, conn);
-            ad.SelectCommand.Parameters.AddWithValue("@cedula", scedula);
+            ad.SelectCommand.Parameters.AddWithValue("@Cedula", scedula);
             
             //3. Recuperamos los datos
             DataTable dt = new DataTable();
             ad.Fill(dt);
-
             Boolean existe = false;
             if (dt.Rows.Count > 0) //Si existen filas
                 existe = true;
             return existe;
-        }
-        public static int delete(String cedula)
-        {
-            //Crear el metodo borrar usando como guia el metodo usar
-            //La sentencia sql es la siguiente:
-            //"delete from NombreTable where campo=@campo"
-
-            //Definir la interfaz de usuario para probar este metodo
-            //txt ingresa la cedula a borrar y luego se borra        
         }
     }
 }
