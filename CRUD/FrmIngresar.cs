@@ -27,49 +27,74 @@ namespace CRUD
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            TIC.DatosPersonas personas = new TIC.DatosPersonas();
-            personas.Cedula = txtCedula.Text;
-            personas.Apellidos = txtApellidos.Text;
-            personas.Nombres = txtNombres.Text;
-            if (cmbSexo.Text == "Masculino")
-                personas.Sexo = "M";
-            else
-                personas.Sexo = "F";
-            personas.Sexo = cmbSexo.Text;
-            personas.FechaNacimiento = dtFechaNacimineto.Value;
-            personas.Correo = txtCorreo.Text;
-            personas.Estatura = int.Parse(txtEstatura.Text);
-            personas.Peso = decimal.Parse(txtPeso.Text);
             int x = 0;
-            try
+            TIC.DatosPersonas personas = new TIC.DatosPersonas();
+            if (this.txtCorreo.Text == "" || this.txtApellidos.Text == "" || this.txtNombres.Text == "" || this.txtCedula.Text == "" || this.txtPeso.Text == "" || this.txtEstatura.Text == "" || this.cmbSexo.Text == "")
             {
-                if (TIC.DatoPersonasDAO.existeCedula(this.txtCedula.Text))
-                {
-                    MessageBox.Show("Esa cedula ya existe en la BDD...");
-                    return; //Abandonar
-                }
-                x = TIC.DatoPersonasDAO.creacion(personas);
-                if (x > 0)
-                    MessageBox.Show("Registro Agregado..");
+                MessageBox.Show("Faltan Datos por llenar...Por favor Ingresarlos");
+            }
+            else
+            {
+                personas.Cedula = txtCedula.Text;
+                personas.Apellidos = txtApellidos.Text;
+                personas.Nombres = txtNombres.Text;
+                if (cmbSexo.Text == "Masculino")
+                    personas.Sexo = "M";
                 else
-                    MessageBox.Show("No se pudo Agregar el Registro");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-                //Console.WriteLine(ex.Message.ToString());
-            }
-            finally
-            {
-                //El codigo que se escribe aqui 
-                //Se ejecutra siempre, exista o no un error
-                //Por ejemplo cerrar una coneccion: conn.close();
-                this.cargarGridPersonas();
+                    personas.Sexo = "F";
+                personas.Sexo = cmbSexo.Text;
+                personas.FechaNacimiento = dtFechaNacimineto.Value;
+                personas.Correo = txtCorreo.Text;
+                try
+                {
+                    personas.Estatura = int.Parse(txtEstatura.Text);
+                    personas.Peso = decimal.Parse(txtPeso.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+                try
+                {
+                    if (TIC.DatoPersonasDAO.existeCedula(this.txtCedula.Text))
+                    {
+                        MessageBox.Show("Esa cedula ya existe en la BDD...");
+                        return; //Abandonar
+                    }
+                    else
+                    {
+                        if (TIC.DatoPersonasDAO.verificarEmail(this.txtCorreo.Text) == true)
+                        {
+                            x = TIC.DatoPersonasDAO.creacion(personas);
+                            if (x > 0)
+                                MessageBox.Show("Registro Agregado..");
+                            else
+                                MessageBox.Show("No se pudo Agregar el Registro");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error en la Verificacion del Correo");
+                            this.txtCorreo.Focus();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                    //Console.WriteLine(ex.Message.ToString());
+                }
+                finally
+                {
+                    //El codigo que se escribe aqui 
+                    //Se ejecutra siempre, exista o no un error
+                    //Por ejemplo cerrar una coneccion: conn.close();
+                    this.cargarGridPersonas();
+                }
             }
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            int y;
+            int y = 0;
             if (this.txtBorrarRegistro.Text == "")
             {
                 this.txtBorrarRegistro.Focus();
@@ -81,7 +106,7 @@ namespace CRUD
                     if (TIC.DatoPersonasDAO.existeCedula(this.txtBorrarRegistro.Text))
                     {
                         y = TIC.DatoPersonasDAO.delete(this.txtBorrarRegistro.Text);
-                        if(y > 0)
+                        if (y > 0)
                         {
                             MessageBox.Show("El Registro ha sido Borrado con Exito...");
                             return;
@@ -95,23 +120,43 @@ namespace CRUD
                         this.txtBorrarRegistro.Focus();
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message.ToString());
                 }
                 finally
                 {
                     this.cargarGridPersonas();
-                }  
+                }
             }
+        }
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            this.txtCedula.Text = "";
+            this.txtApellidos.Text = "";
+            this.txtNombres.Text = "";
+            this.cmbSexo.Text = "";
+            this.txtCorreo.Text = "";
+            this.txtEstatura.Text = "";
+            this.txtPeso.Text = "";
+            this.txtBorrarRegistro.Text = "";
+            this.txtCedula.Focus();
+            this.cargarGridPersonas();
+        }
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            this.cargarGridPersonas();
+            MessageBox.Show("Se Actualizo el GridTable con la BDD...");
+        }
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
         private void cmbSexo_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
         private void dgPersonas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
     }
 }
