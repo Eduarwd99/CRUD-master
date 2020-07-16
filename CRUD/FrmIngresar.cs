@@ -132,14 +132,14 @@ namespace CRUD
         }
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            this.txtCedula.Text = "";
-            this.txtApellidos.Text = "";
-            this.txtNombres.Text = "";
+            this.txtCedula.Clear();
+            this.txtApellidos.Clear();
+            this.txtNombres.Clear();
             this.cmbSexo.Text = "";
-            this.txtCorreo.Text = "";
-            this.txtEstatura.Text = "";
-            this.txtPeso.Text = "";
-            this.txtBorrarRegistro.Text = "";
+            this.txtCorreo.Clear();
+            this.txtEstatura.Clear();
+            this.txtPeso.Clear();
+            this.txtBorrarRegistro.Clear();
             this.txtCedula.Focus();
             this.cargarGridPersonas();
         }
@@ -156,6 +156,33 @@ namespace CRUD
         {
         }
         private void dgPersonas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int fila = e.RowIndex;
+            int col = e.ColumnIndex;
+            //MessageBox.Show("fila: " + fila.ToString() + ", col: " + col.ToString());
+            //2. recuperar la cedula de la fila actual
+            //string cedula = dgPersonas["Cedula", fila].Value.ToString();
+            string cedula = dgPersonas[2, fila].Value.ToString();
+            
+            // 1.detectar click en link eliminar
+            if (this.dgPersonas.Columns[e.ColumnIndex].Name == "linkEliminar")
+            {
+                string confirmarMSG = string.Format("¿Está seguro de que desea eliminar al registro seleccionado?"/*, dgPersonas.Rows[e.RowIndex].Cells["NameColumn"].Value*/);
+                //3. preguntar al usuario si desea eliminar 
+                if (MessageBox.Show(confirmarMSG, "Eliminar Registro", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    //4. en caso afirmativo, eliminar el registro y actualizar el dgv.
+                    //dgPersonas.Rows.RemoveAt(e.RowIndex);
+                    int x = TIC.DatoPersonasDAO.delete(cedula);
+                    if(x > 0)
+                        MessageBox.Show("El Registro fue Eliminado con Exito");
+                    else
+                        MessageBox.Show("No se Pudo Eliminar el Registro");
+                    this.cargarGridPersonas();                    
+                }
+            }
+        }
+        private void dgPersonas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
         }
     }

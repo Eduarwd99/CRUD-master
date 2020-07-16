@@ -52,6 +52,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtBorrarRegistro = new System.Windows.Forms.TextBox();
             this.btnActualizar = new System.Windows.Forms.Button();
+            this.linkEliminar = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.linkModificar = new System.Windows.Forms.DataGridViewLinkColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgPersonas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -232,7 +234,11 @@
             this.dgPersonas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgPersonas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgPersonas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.linkEliminar,
+            this.linkModificar});
             this.dgPersonas.Location = new System.Drawing.Point(15, 322);
             this.dgPersonas.Name = "dgPersonas";
             this.dgPersonas.ReadOnly = true;
@@ -240,6 +246,7 @@
             this.dgPersonas.RowTemplate.Height = 24;
             this.dgPersonas.Size = new System.Drawing.Size(811, 220);
             this.dgPersonas.TabIndex = 20;
+            this.dgPersonas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPersonas_CellClick);
             this.dgPersonas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPersonas_CellContentClick);
             // 
             // btnBorrar
@@ -278,6 +285,30 @@
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // linkEliminar
+            // 
+            this.linkEliminar.HeaderText = "Accion";
+            this.linkEliminar.MinimumWidth = 8;
+            this.linkEliminar.Name = "linkEliminar";
+            this.linkEliminar.ReadOnly = true;
+            this.linkEliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.linkEliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.linkEliminar.Text = "Eliminar";
+            this.linkEliminar.UseColumnTextForLinkValue = true;
+            this.linkEliminar.Width = 93;
+            // 
+            // linkModificar
+            // 
+            this.linkModificar.HeaderText = "Accion";
+            this.linkModificar.MinimumWidth = 8;
+            this.linkModificar.Name = "linkModificar";
+            this.linkModificar.ReadOnly = true;
+            this.linkModificar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.linkModificar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.linkModificar.Text = "Modificar";
+            this.linkModificar.UseColumnTextForLinkValue = true;
+            this.linkModificar.Width = 93;
             // 
             // FrmIngresar
             // 
@@ -343,5 +374,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtBorrarRegistro;
         private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.DataGridViewLinkColumn linkEliminar;
+        private System.Windows.Forms.DataGridViewLinkColumn linkModificar;
     }
 }

@@ -114,5 +114,38 @@ namespace TIC
             else
                 return false;
         }
+        public static DatosPersonas getPersona(String scedula) //TAREA MODIFICAR
+        {
+            //1. definir y configurar conexión
+            SqlConnection conn = new SqlConnection(cadenaConexion);
+
+            //2. Definir y configurar la operación a realizar en el motor de BDD
+            //escribir sentencia sql
+            string sql = "select cedula,apellidos " +
+                "from DatosPersonas " +
+                "where cedula=@cedula";
+
+            //Definir un adaptador de datos: es un puente que permite pasar los datos de nuestra BDD, hacia
+            //el datatable
+            SqlDataAdapter ad = new SqlDataAdapter(sql, conn);
+            ad.SelectCommand.Parameters.AddWithValue("@cedula", scedula);
+
+            //3. recuperamos los datos
+            DataTable dt = new DataTable();
+            ad.Fill(dt);
+
+            DatosPersonas persona = new DatosPersonas();
+            if (dt.Rows.Count > 0) //si existen filas
+            {
+                foreach (DataRow fila in dt.Rows)
+                {
+                    persona.Cedula = fila["cedula"].ToString();
+
+
+
+                }
+            }
+            return persona;
+        }
     }
 }
