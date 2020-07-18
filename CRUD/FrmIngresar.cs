@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TIC;
 
 namespace CRUD
 {
@@ -20,7 +21,7 @@ namespace CRUD
         {
             this.cargarGridPersonas();
         }
-        private void cargarGridPersonas()
+        public void cargarGridPersonas()
         {
             DataTable dt = TIC.DatoPersonasDAO.getAll();
             this.dgPersonas.DataSource = dt;
@@ -31,7 +32,7 @@ namespace CRUD
             TIC.DatosPersonas personas = new TIC.DatosPersonas();
             if (this.txtCorreo.Text == "" || this.txtApellidos.Text == "" || this.txtNombres.Text == "" || this.txtCedula.Text == "" || this.txtPeso.Text == "" || this.txtEstatura.Text == "" || this.cmbSexo.Text == "")
             {
-                MessageBox.Show("Faltan Datos por llenar...Por favor Ingresarlos");
+                MessageBox.Show("Faltan Datos por llenar...Por favor Ingresalos");
             }
             else
             {
@@ -92,7 +93,7 @@ namespace CRUD
                 }
             }
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click/*btnBorrar*/(object sender, EventArgs e)
         {
             int y = 0;
             if (this.txtBorrarRegistro.Text == "")
@@ -151,28 +152,24 @@ namespace CRUD
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-        private void cmbSexo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
+        }        
         private void dgPersonas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int fila = e.RowIndex;
             int col = e.ColumnIndex;
             //MessageBox.Show("fila: " + fila.ToString() + ", col: " + col.ToString());
-            //2. recuperar la cedula de la fila actual
+            //1. recuperar la cedula de la fila actual
             //string cedula = dgPersonas["Cedula", fila].Value.ToString();
             string cedula = dgPersonas[2, fila].Value.ToString();
             
-            // 1.detectar click en link eliminar
+            // 2.Detectar click en link eliminar
             if (this.dgPersonas.Columns[e.ColumnIndex].Name == "linkEliminar")
             {
                 string confirmarMSG = string.Format("¿Está seguro de que desea eliminar al registro seleccionado?"/*, dgPersonas.Rows[e.RowIndex].Cells["NameColumn"].Value*/);
-                //3. preguntar al usuario si desea eliminar 
+                //3. Preguntar al usuario si desea eliminar 
                 if (MessageBox.Show(confirmarMSG, "Eliminar Registro", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    //4. en caso afirmativo, eliminar el registro y actualizar el dgv.
-                    //dgPersonas.Rows.RemoveAt(e.RowIndex);
+                    //4. En caso afirmativo, eliminar el registro y actualizar el dgv.dgPersonas.Rows.RemoveAt(e.RowIndex);
                     int x = TIC.DatoPersonasDAO.delete(cedula);
                     if(x > 0)
                         MessageBox.Show("El Registro fue Eliminado con Exito");
@@ -181,6 +178,27 @@ namespace CRUD
                     this.cargarGridPersonas();                    
                 }
             }
+
+            // Si se detecta click en link modificar
+            if (this.dgPersonas.Columns[e.ColumnIndex].Name == "linkModificar")
+            {
+                FrmModificar FM = new FrmModificar();                
+                DatosPersonas DP = new DatosPersonas();
+                DP = TIC.DatoPersonasDAO.getPersona(cedula);
+
+                FM.txtCedulaMod.Text = DP.Cedula;
+                FM.txtApellidosMod.Text = DP.Apellidos;
+                FM.txtNombresMod.Text = DP.Nombres;
+                FM.cmbSexoMod.Text = DP.Sexo;
+                FM.dtFechaNaciminetoMod.Value = DP.FechaNacimiento;
+                FM.txtCorreoMod.Text = DP.Correo;
+                FM.txtEstaturaMod.Text = DP.Estatura.ToString();
+                FM.txtPesoMod.Text = DP.Peso.ToString();
+                FM.Show();
+            }
+        }
+        private void cmbSexo_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
         private void dgPersonas_CellClick(object sender, DataGridViewCellEventArgs e)
         {

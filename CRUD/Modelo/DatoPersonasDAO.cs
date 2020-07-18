@@ -52,15 +52,35 @@ namespace TIC
 
             int y = 0;
             SqlConnection conn = new SqlConnection(cadenaConexion);
-            string sql = " delete from Datos_Persona " + "where Cedula = "+ cedulaBorrar;
+            string sql = " delete from Datos_Persona " + "where Cedula = '" + cedulaBorrar + "'";
             SqlCommand comando = new SqlCommand(sql, conn);
-
             comando.CommandType = System.Data.CommandType.Text;
+
             conn.Open();
             if (comando.ExecuteNonQuery() == 1)
                 y = 1;//comando.ExecuteNonQuery(); // Se borro
             conn.Close();
             return y;
+        }
+        public static int update(String cedulaMod, DatosPersonas datosPersonas)
+        {
+            SqlConnection conn = new SqlConnection(cadenaConexion);            
+            string sql = " update from Datos_Persona " + "set Apellidos=@Apellidos, Nombres=@Nombres, Sexo=@Sexo, FechaNacimiento=@FechaNacimiento, Correo=@Correo, Estatura_Cm=@Estatura_Cm, Peso=@Peso  " + "where Cedula = '" + cedulaMod + "'";
+            SqlCommand comando = new SqlCommand(sql, conn);
+
+            comando.CommandType = System.Data.CommandType.Text; 
+            comando.Parameters.AddWithValue("@Apellidos", datosPersonas.Apellidos);
+            comando.Parameters.AddWithValue("@Nombres", datosPersonas.Nombres);
+            comando.Parameters.AddWithValue("@Sexo", datosPersonas.Sexo);
+            comando.Parameters.AddWithValue("@FechaNacimiento", datosPersonas.FechaNacimiento.Date);
+            comando.Parameters.AddWithValue("@Correo", datosPersonas.Correo);
+            comando.Parameters.AddWithValue("@Estatura_Cm", datosPersonas.Estatura);
+            comando.Parameters.AddWithValue("@Peso", datosPersonas.Peso);
+
+            conn.Open();
+            int z = comando.ExecuteNonQuery(); 
+            conn.Close();
+            return z;
         }
         public static DataTable getAll()
         {
@@ -69,7 +89,7 @@ namespace TIC
 
             //2. Definir y configurar la operacion a realizar en el motor de BDD
             //Escribir sentecia sql
-            string sql = "select Cedula, Apellidos, Nombres, Sexo, " + "FechaNacimiento, Correo, Estatura_Cm " + "from Datos_Persona " + "order by Apellidos, Nombres";
+            string sql = "select Cedula, Apellidos, Nombres, Sexo, " + "FechaNacimiento, Correo, Estatura_Cm, Peso " + "from Datos_Persona " + "order by Apellidos, Nombres";
             //Definir un adaptador de datos (puente que permite pasar datos del daatatable a la BDD)
             //El adaptador abre y cierra la sesion al sacar datos
             SqlDataAdapter ad = new SqlDataAdapter(sql, conn);
@@ -114,35 +134,34 @@ namespace TIC
             else
                 return false;
         }
-        public static DatosPersonas getPersona(String scedula) //TAREA MODIFICAR
+        public static DatosPersonas getPersona(String Scedula) //TAREA MODIFICAR
         {
-            //1. definir y configurar conexión
+            //1. Definir y configurar conexión
             SqlConnection conn = new SqlConnection(cadenaConexion);
 
             //2. Definir y configurar la operación a realizar en el motor de BDD
             //escribir sentencia sql
-            string sql = "select cedula,apellidos " +
-                "from DatosPersonas " +
-                "where cedula=@cedula";
-
-            //Definir un adaptador de datos: es un puente que permite pasar los datos de nuestra BDD, hacia
-            //el datatable
+            string sql = "select Cedula, Apellidos " + "from Datos_Persona " + "where Cedula = @Cedula";
+            //Definir un adaptador de datos: es un puente que permite pasar los datos de nuestra BDD, hacia el datatable
             SqlDataAdapter ad = new SqlDataAdapter(sql, conn);
-            ad.SelectCommand.Parameters.AddWithValue("@cedula", scedula);
+            ad.SelectCommand.Parameters.AddWithValue("@Cedula", Scedula);
 
-            //3. recuperamos los datos
+            //3. Recuperamos los datos
             DataTable dt = new DataTable();
             ad.Fill(dt);
-
             DatosPersonas persona = new DatosPersonas();
-            if (dt.Rows.Count > 0) //si existen filas
+            if (dt.Rows.Count > 0) //Si existen filas
             {
-                foreach (DataRow fila in dt.Rows)
+                foreach(DataRow fila in dt.Rows)
                 {
-                    persona.Cedula = fila["cedula"].ToString();
-
-
-
+                    persona.Cedula = fila["Cedula"].ToString();
+                    persona.Apellidos = fila["Apellidos"].ToString();
+                    persona.Nombres = fila["Nombres"].ToString();
+                    persona.Sexo = fila["Sexo"].ToString();
+                    persona.FechaNacimiento = DateTime.Parse(fila["FechaNacimiento"].ToString());
+                    persona.Correo = fila["Correo"].ToString();
+                    persona.Estatura = int.Parse(fila["Estatura_Cm"].ToString());
+                    persona.Peso = decimal.Parse(fila["Peso"].ToString());                                       
                 }
             }
             return persona;

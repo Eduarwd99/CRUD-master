@@ -52,12 +52,21 @@
     <Compile Include="FrmIngresar.Designer.cs">
       <DependentUpon>FrmIngresar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmModificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmModificar.Designer.cs">
+      <DependentUpon>FrmModificar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\DatoPersonasDAO.cs" />
     <Compile Include="Modelo\DatosPersonas.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmIngresar.resx">
       <DependentUpon>FrmIngresar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmModificar.resx">
+      <DependentUpon>FrmModificar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
