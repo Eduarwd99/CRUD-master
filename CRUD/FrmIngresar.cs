@@ -194,7 +194,7 @@ namespace CRUD
                 FM.txtCorreoMod.Text = DP.Correo;
                 FM.txtEstaturaMod.Text = DP.Estatura.ToString();
                 FM.txtPesoMod.Text = DP.Peso.ToString();
-                FM.Show();
+                FM.ShowDialog(); //Mostrar formulario como tipo dialogo
             }
         }
         private void cmbSexo_SelectedIndexChanged(object sender, EventArgs e)

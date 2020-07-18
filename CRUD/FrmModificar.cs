@@ -59,7 +59,7 @@ namespace CRUD
                 {
                     if (TIC.DatoPersonasDAO.verificarEmail(this.txtCorreoMod.Text) == true)
                     {
-                        act = TIC.DatoPersonasDAO.creacion(personas);
+                        act = TIC.DatoPersonasDAO.update(this.txtCedulaMod.Text, personas);
                         if (act > 0)
                             MessageBox.Show("Registro Actualizado..");
                         else
