@@ -25,6 +25,7 @@ namespace CRUD
         {
             DataTable dt = TIC.DatoPersonasDAO.getAll();
             this.dgPersonas.DataSource = dt;
+            
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -179,13 +180,12 @@ namespace CRUD
                 }
             }
 
+            FrmModificar FM = new FrmModificar();
+            DatosPersonas DP = new DatosPersonas();
             // Si se detecta click en link modificar
             if (this.dgPersonas.Columns[e.ColumnIndex].Name == "linkModificar")
             {
-                FrmModificar FM = new FrmModificar();                
-                DatosPersonas DP = new DatosPersonas();
                 DP = TIC.DatoPersonasDAO.getPersona(cedula);
-
                 FM.txtCedulaMod.Text = DP.Cedula;
                 FM.txtApellidosMod.Text = DP.Apellidos;
                 FM.txtNombresMod.Text = DP.Nombres;

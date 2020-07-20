@@ -89,7 +89,36 @@ namespace TIC
 
             //2. Definir y configurar la operacion a realizar en el motor de BDD
             //Escribir sentecia sql
-            string sql = "select Cedula, Apellidos, Nombres, Sexo, " + "FechaNacimiento, Correo, Estatura_Cm, Peso " + "from Datos_Persona " + "order by Apellidos, Nombres";
+
+            string sql = "select Cedula, Apellidos, Nombres, Sexo, FechaNacimiento, Correo, Estatura_Cm, Peso " + "from Datos_Persona " + "order by Apellidos, Nombres";
+            //string sql = "select Cedula, upper(Apellidos + ' ' + Nombres)[Nombre Completo], " + "Sexo, FechaNacimiento, Correo, Estatura_Cm, Peso " + "from Datos_Persona " + "order by Apellidos, Nombres";
+            //Linea del Profe string sql = "select cedula Cédula,upper(Apellidos + ' ' + Nombres) [Nombre Completo],sexo Género, " + "FechaNacimiento, Correo, estaturacm [Estatura en cm]" + "from DatosPersonas " +   "order by apellidos, nombres";
+
+            //Definir un adaptador de datos (puente que permite pasar datos del daatatable a la BDD)
+            //El adaptador abre y cierra la sesion al sacar datos
+            SqlDataAdapter ad = new SqlDataAdapter(sql, conn);
+
+            //3. Recuperamos los datos
+            DataTable dt = new DataTable();
+            ad.Fill(dt);
+            return dt;
+        }
+        public static DataTable getPersonasEdad()
+        {
+            //1. Definir y configurar conexion
+            SqlConnection conn = new SqlConnection(cadenaConexion);
+
+            //2. Definir y configurar la operacion a realizar en el motor de BDD
+            //Escribir sentecia sql
+
+            /*  
+                select cedula Cédula
+                ,upper(Apellidos + ' ' + Nombres) + '(' + ltrim(str(DATEDIFF(year, FechaNacimiento, getDate()))) + ' años)'[Nombre Completo]
+                from DatosPersonas
+                order by apellidos, nombres
+            */
+            string sql = "select Cedula, upper(Apellidos + ' ' + Nombres) + '(' + ltrim(str(DATEDIFF(year, FechaNacimiento, getDate()))) + ' años)' [Nombre Completo]," + "from Datos_Persona " + "order by Apellidos, Nombres";
+            
             //Definir un adaptador de datos (puente que permite pasar datos del daatatable a la BDD)
             //El adaptador abre y cierra la sesion al sacar datos
             SqlDataAdapter ad = new SqlDataAdapter(sql, conn);
@@ -141,7 +170,7 @@ namespace TIC
 
             //2. Definir y configurar la operación a realizar en el motor de BDD
             //escribir sentencia sql
-            string sql = "select Cedula, Apellidos " + "from Datos_Persona " + "where Cedula = @Cedula";
+            string sql = "select Cedula, Apellidos, Nombres, Sexo, FechaNacimiento, Correo, Estatura_Cm, Peso " + "from Datos_Persona " + "where Cedula = @Cedula";
             //Definir un adaptador de datos: es un puente que permite pasar los datos de nuestra BDD, hacia el datatable
             SqlDataAdapter ad = new SqlDataAdapter(sql, conn);
             ad.SelectCommand.Parameters.AddWithValue("@Cedula", Scedula);
@@ -161,7 +190,8 @@ namespace TIC
                     persona.FechaNacimiento = DateTime.Parse(fila["FechaNacimiento"].ToString());
                     persona.Correo = fila["Correo"].ToString();
                     persona.Estatura = int.Parse(fila["Estatura_Cm"].ToString());
-                    persona.Peso = decimal.Parse(fila["Peso"].ToString());                                       
+                    persona.Peso = decimal.Parse(fila["Peso"].ToString());
+                    break; //Abandonar Bucle
                 }
             }
             return persona;

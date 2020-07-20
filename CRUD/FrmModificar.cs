@@ -20,7 +20,7 @@ namespace CRUD
         {
             //DataTable dt = TIC.DatoPersonasDAO.getAll();
             FrmIngresar FR = new FrmIngresar();
-            FR.dgPersonas.DataSource = TIC.DatoPersonasDAO.getAll(); ;
+            FR.dgPersonas.DataSource = TIC.DatoPersonasDAO.getAll();
         }
         private void button1_Click(object sender, EventArgs e)
         {
