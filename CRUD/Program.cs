@@ -16,7 +16,7 @@ namespace CRUD
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmIngresar());
+            Application.Run(new FrmIngresarMaterias());
         }
     }
 }

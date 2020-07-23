@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtSexo = new System.Windows.Forms.TextBox();
             this.dtFechaNacimineto = new System.Windows.Forms.DateTimePicker();
             this.txtPeso = new System.Windows.Forms.TextBox();
             this.txtEstatura = new System.Windows.Forms.TextBox();
@@ -47,7 +48,6 @@
             this.cmbCedula = new System.Windows.Forms.ComboBox();
             this.btnCargar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.txtSexo = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -77,6 +77,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de la Persona";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // txtSexo
+            // 
+            this.txtSexo.BackColor = System.Drawing.SystemColors.Window;
+            this.txtSexo.Location = new System.Drawing.Point(39, 103);
+            this.txtSexo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSexo.MaxLength = 30;
+            this.txtSexo.Name = "txtSexo";
+            this.txtSexo.ReadOnly = true;
+            this.txtSexo.Size = new System.Drawing.Size(265, 20);
+            this.txtSexo.TabIndex = 33;
             // 
             // dtFechaNacimineto
             // 
@@ -265,17 +276,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // txtSexo
-            // 
-            this.txtSexo.BackColor = System.Drawing.SystemColors.Window;
-            this.txtSexo.Location = new System.Drawing.Point(39, 103);
-            this.txtSexo.Margin = new System.Windows.Forms.Padding(2);
-            this.txtSexo.MaxLength = 30;
-            this.txtSexo.Name = "txtSexo";
-            this.txtSexo.ReadOnly = true;
-            this.txtSexo.Size = new System.Drawing.Size(265, 20);
-            this.txtSexo.TabIndex = 33;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -291,7 +291,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(334, 310);
+            this.ClientSize = new System.Drawing.Size(339, 310);
             this.ControlBox = false;
             this.Controls.Add(this.label9);
             this.Controls.Add(this.button1);

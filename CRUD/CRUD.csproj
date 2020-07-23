@@ -52,11 +52,23 @@
     <Compile Include="frmBusqueda.Designer.cs">
       <DependentUpon>frmBusqueda.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmBusquedaMaterias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBusquedaMaterias.Designer.cs">
+      <DependentUpon>FrmBusquedaMaterias.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmIngresar.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmIngresar.Designer.cs">
       <DependentUpon>FrmIngresar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmIngresarMaterias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmIngresarMaterias.Designer.cs">
+      <DependentUpon>FrmIngresarMaterias.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmModificar.cs">
       <SubType>Form</SubType>
@@ -64,18 +76,35 @@
     <Compile Include="FrmModificar.Designer.cs">
       <DependentUpon>FrmModificar.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmModificarMaterias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmModificarMaterias.Designer.cs">
+      <DependentUpon>FrmModificarMaterias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\DatoPersonasDAO.cs" />
+    <Compile Include="Modelo\DatosMaterias.cs" />
+    <Compile Include="Modelo\DatosMateriasDAO.cs" />
     <Compile Include="Modelo\DatosPersonas.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmBusqueda.resx">
       <DependentUpon>frmBusqueda.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmBusquedaMaterias.resx">
+      <DependentUpon>FrmBusquedaMaterias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmIngresar.resx">
       <DependentUpon>FrmIngresar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmIngresarMaterias.resx">
+      <DependentUpon>FrmIngresarMaterias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmModificar.resx">
       <DependentUpon>FrmModificar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmModificarMaterias.resx">
+      <DependentUpon>FrmModificarMaterias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
