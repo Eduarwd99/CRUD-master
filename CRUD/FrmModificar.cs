@@ -18,9 +18,10 @@ namespace CRUD
         }
         private void cargarGridPersonasMod()
         {
-            //DataTable dt = TIC.DatoPersonasDAO.getAll();
+            DataTable dt = TIC.DatoPersonasDAO.getAll();
             FrmIngresar FR = new FrmIngresar();
-            FR.dgPersonas.DataSource = TIC.DatoPersonasDAO.getAll();
+            FR.dgPersonas.DataSource = dt;
+            //FR.btnActualizar.PerformClick();
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -36,7 +37,7 @@ namespace CRUD
             }
             else
             {
-                //personas.Cedula = txtCedulaMod.Text;
+                personas.Cedula = txtCedulaMod.Text;
                 personas.Apellidos = txtApellidosMod.Text;
                 personas.Nombres = txtNombresMod.Text;
                 if (cmbSexoMod.Text == "Masculino")
@@ -59,7 +60,7 @@ namespace CRUD
                 {
                     if (TIC.DatoPersonasDAO.verificarEmail(this.txtCorreoMod.Text) == true)
                     {
-                        act = TIC.DatoPersonasDAO.update(this.txtCedulaMod.Text, personas);
+                        act = TIC.DatoPersonasDAO.update(personas);
                         if (act > 0)
                             MessageBox.Show("Registro Actualizado..");
                         else
@@ -78,9 +79,6 @@ namespace CRUD
                 }
                 finally
                 {
-                    //El codigo que se escribe aqui 
-                    //Se ejecutra siempre, exista o no un error
-                    //Por ejemplo cerrar una coneccion: conn.close();
                     this.cargarGridPersonasMod();
                 }
             }

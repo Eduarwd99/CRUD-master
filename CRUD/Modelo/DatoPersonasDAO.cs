@@ -11,7 +11,7 @@ namespace TIC
 {
     public static class DatoPersonasDAO
     {
-        private static String cadenaConexion = @"server=DESKTOP-9VT6L6J; database=TI2020; integrated security = true";
+        private static String cadenaConexion = @"server=PC; database=TI2020; integrated security = true";
         public static int creacion(DatosPersonas datosPersonas)
         {
             // 1) Configurar la  conexion de datos con una fuente de datos 
@@ -52,7 +52,7 @@ namespace TIC
 
             int y = 0;
             SqlConnection conn = new SqlConnection(cadenaConexion);
-            string sql = " delete from Datos_Persona " + "where Cedula = '" + cedulaBorrar + "'";
+            string sql = "delete from Datos_Persona " + "where Cedula = '" + cedulaBorrar + "'";
             SqlCommand comando = new SqlCommand(sql, conn);
             comando.CommandType = System.Data.CommandType.Text;
 
@@ -62,13 +62,14 @@ namespace TIC
             conn.Close();
             return y;
         }
-        public static int update(String cedulaMod, DatosPersonas datosPersonas)
+        public static int update(DatosPersonas datosPersonas)
         {
             SqlConnection conn = new SqlConnection(cadenaConexion);            
-            string sql = " update from Datos_Persona " + "set Apellidos=@Apellidos, Nombres=@Nombres, Sexo=@Sexo, FechaNacimiento=@FechaNacimiento, Correo=@Correo, Estatura_Cm=@Estatura_Cm, Peso=@Peso  " + "where Cedula = '" + cedulaMod + "'";
+            string sql = "update Datos_Persona " + "set Apellidos=@Apellidos, Nombres=@Nombres, Sexo=@Sexo, FechaNacimiento=@FechaNacimiento, Correo=@Correo, Estatura_Cm=@Estatura_Cm, Peso=@Peso " + "where Cedula=@Cedula";
             SqlCommand comando = new SqlCommand(sql, conn);
 
-            comando.CommandType = System.Data.CommandType.Text; 
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.Parameters.AddWithValue("@Cedula", datosPersonas.Cedula);
             comando.Parameters.AddWithValue("@Apellidos", datosPersonas.Apellidos);
             comando.Parameters.AddWithValue("@Nombres", datosPersonas.Nombres);
             comando.Parameters.AddWithValue("@Sexo", datosPersonas.Sexo);
@@ -117,7 +118,7 @@ namespace TIC
                 from DatosPersonas
                 order by apellidos, nombres
             */
-            string sql = "select Cedula, upper(Apellidos + ' ' + Nombres) + '(' + ltrim(str(DATEDIFF(year, FechaNacimiento, getDate()))) + ' años)' [Nombre Completo]," + "from Datos_Persona " + "order by Apellidos, Nombres";
+            string sql = "select Cedula, upper(Apellidos + ' ' + Nombres) + ' (' + ltrim(str(DATEDIFF(year, FechaNacimiento, getDate()))) + ' años)' [Nombre Completo] " + "from Datos_Persona " + "order by Apellidos, Nombres";
             
             //Definir un adaptador de datos (puente que permite pasar datos del daatatable a la BDD)
             //El adaptador abre y cierra la sesion al sacar datos
@@ -170,7 +171,7 @@ namespace TIC
 
             //2. Definir y configurar la operación a realizar en el motor de BDD
             //escribir sentencia sql
-            string sql = "select Cedula, Apellidos, Nombres, Sexo, FechaNacimiento, Correo, Estatura_Cm, Peso " + "from Datos_Persona " + "where Cedula = @Cedula";
+            string sql = "select Cedula, Apellidos, Nombres, Sexo, FechaNacimiento, Correo, Estatura_Cm, Peso " + "from Datos_Persona " + "where Cedula = '" + Scedula + "'";
             //Definir un adaptador de datos: es un puente que permite pasar los datos de nuestra BDD, hacia el datatable
             SqlDataAdapter ad = new SqlDataAdapter(sql, conn);
             ad.SelectCommand.Parameters.AddWithValue("@Cedula", Scedula);

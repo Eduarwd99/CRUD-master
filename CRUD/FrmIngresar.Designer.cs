@@ -54,6 +54,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtBorrarRegistro = new System.Windows.Forms.TextBox();
             this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgPersonas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -140,7 +141,7 @@
             // txtCedula
             // 
             this.txtCedula.Location = new System.Drawing.Point(53, 5);
-            this.txtCedula.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCedula.Margin = new System.Windows.Forms.Padding(2);
             this.txtCedula.MaxLength = 10;
             this.txtCedula.Name = "txtCedula";
             this.txtCedula.Size = new System.Drawing.Size(254, 20);
@@ -149,7 +150,7 @@
             // txtApellidos
             // 
             this.txtApellidos.Location = new System.Drawing.Point(61, 31);
-            this.txtApellidos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtApellidos.Margin = new System.Windows.Forms.Padding(2);
             this.txtApellidos.MaxLength = 30;
             this.txtApellidos.Name = "txtApellidos";
             this.txtApellidos.Size = new System.Drawing.Size(245, 20);
@@ -158,7 +159,7 @@
             // txtNombres
             // 
             this.txtNombres.Location = new System.Drawing.Point(61, 54);
-            this.txtNombres.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNombres.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombres.MaxLength = 30;
             this.txtNombres.Name = "txtNombres";
             this.txtNombres.Size = new System.Drawing.Size(245, 20);
@@ -167,7 +168,7 @@
             // txtCorreo
             // 
             this.txtCorreo.Location = new System.Drawing.Point(49, 135);
-            this.txtCorreo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCorreo.Margin = new System.Windows.Forms.Padding(2);
             this.txtCorreo.MaxLength = 60;
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(258, 20);
@@ -176,7 +177,7 @@
             // txtEstatura
             // 
             this.txtEstatura.Location = new System.Drawing.Point(61, 159);
-            this.txtEstatura.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEstatura.Margin = new System.Windows.Forms.Padding(2);
             this.txtEstatura.MaxLength = 3;
             this.txtEstatura.Name = "txtEstatura";
             this.txtEstatura.Size = new System.Drawing.Size(246, 20);
@@ -185,7 +186,7 @@
             // txtPeso
             // 
             this.txtPeso.Location = new System.Drawing.Point(41, 183);
-            this.txtPeso.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPeso.Margin = new System.Windows.Forms.Padding(2);
             this.txtPeso.MaxLength = 6;
             this.txtPeso.Name = "txtPeso";
             this.txtPeso.Size = new System.Drawing.Size(265, 20);
@@ -198,7 +199,7 @@
             "Masculino",
             "Femenino"});
             this.cmbSexo.Location = new System.Drawing.Point(41, 82);
-            this.cmbSexo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbSexo.Margin = new System.Windows.Forms.Padding(2);
             this.cmbSexo.Name = "cmbSexo";
             this.cmbSexo.Size = new System.Drawing.Size(265, 21);
             this.cmbSexo.TabIndex = 15;
@@ -208,7 +209,7 @@
             // 
             this.dtFechaNacimineto.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtFechaNacimineto.Location = new System.Drawing.Point(117, 109);
-            this.dtFechaNacimineto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtFechaNacimineto.Margin = new System.Windows.Forms.Padding(2);
             this.dtFechaNacimineto.Name = "dtFechaNacimineto";
             this.dtFechaNacimineto.Size = new System.Drawing.Size(189, 20);
             this.dtFechaNacimineto.TabIndex = 16;
@@ -216,7 +217,7 @@
             // btnGuardar
             // 
             this.btnGuardar.Location = new System.Drawing.Point(340, 14);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(89, 27);
             this.btnGuardar.TabIndex = 17;
@@ -227,7 +228,7 @@
             // btnNuevo
             // 
             this.btnNuevo.Location = new System.Drawing.Point(340, 55);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(89, 24);
             this.btnNuevo.TabIndex = 18;
@@ -238,11 +239,11 @@
             // btnCerrar
             // 
             this.btnCerrar.Location = new System.Drawing.Point(447, 14);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(89, 24);
             this.btnCerrar.TabIndex = 19;
-            this.btnCerrar.Text = "Cerrar ";
+            this.btnCerrar.Text = "Salir";
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
@@ -259,7 +260,7 @@
             this.linkEliminar,
             this.linkModificar});
             this.dgPersonas.Location = new System.Drawing.Point(10, 209);
-            this.dgPersonas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgPersonas.Margin = new System.Windows.Forms.Padding(2);
             this.dgPersonas.Name = "dgPersonas";
             this.dgPersonas.ReadOnly = true;
             this.dgPersonas.RowHeadersWidth = 51;
@@ -296,7 +297,7 @@
             // btnBorrar
             // 
             this.btnBorrar.Location = new System.Drawing.Point(447, 95);
-            this.btnBorrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBorrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnBorrar.Name = "btnBorrar";
             this.btnBorrar.Size = new System.Drawing.Size(89, 24);
             this.btnBorrar.TabIndex = 21;
@@ -317,7 +318,7 @@
             // txtBorrarRegistro
             // 
             this.txtBorrarRegistro.Location = new System.Drawing.Point(325, 144);
-            this.txtBorrarRegistro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBorrarRegistro.Margin = new System.Windows.Forms.Padding(2);
             this.txtBorrarRegistro.MaxLength = 6;
             this.txtBorrarRegistro.Name = "txtBorrarRegistro";
             this.txtBorrarRegistro.Size = new System.Drawing.Size(226, 20);
@@ -326,7 +327,7 @@
             // btnActualizar
             // 
             this.btnActualizar.Location = new System.Drawing.Point(447, 55);
-            this.btnActualizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(89, 24);
             this.btnActualizar.TabIndex = 25;
@@ -334,11 +335,23 @@
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(340, 95);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(89, 24);
+            this.btnBuscar.TabIndex = 26;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // FrmIngresar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(557, 359);
+            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.txtBorrarRegistro);
             this.Controls.Add(this.label9);
@@ -363,8 +376,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmIngresar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de Datos Personales ";
             this.Load += new System.EventHandler(this.FrmIngresar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgPersonas)).EndInit();
@@ -397,9 +411,10 @@
         private System.Windows.Forms.Button btnBorrar;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtBorrarRegistro;
-        private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.DataGridViewLinkColumn linkEliminar;
         private System.Windows.Forms.DataGridViewLinkColumn linkModificar;
         public System.Windows.Forms.DataGridView dgPersonas;
+        private System.Windows.Forms.Button btnBuscar;
+        public System.Windows.Forms.Button btnActualizar;
     }
 }

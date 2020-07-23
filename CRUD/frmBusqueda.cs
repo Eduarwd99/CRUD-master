@@ -26,7 +26,7 @@ namespace CRUD
             DataTable dt = TIC.DatoPersonasDAO.getPersonasEdad();
             this.cmbCedula.DataSource = dt;
             this.cmbCedula.ValueMember = "Cedula";
-            this.cmbCedula.DisplayMember = "Nombre";
+            this.cmbCedula.DisplayMember = "Nombre Completo";
         }
         private void cmbCedula_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -45,23 +45,17 @@ namespace CRUD
                 MessageBox.Show(ex.Message.ToString());
             }            
         }
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
         private void cargarPersona(TIC.DatosPersonas persona)
         {
             //Cargar los datos en los txtBox
             this.txtCedula.Text = persona.Cedula;
             this.txtApellidos.Text = persona.Apellidos;
             this.txtNombres.Text = persona.Nombres;
+            this.txtSexo.Text = persona.Sexo;
             this.dtFechaNacimineto.Value = persona.FechaNacimiento;
+            this.txtCorreo.Text = persona.Correo;
             this.txtEstatura.Text = persona.Estatura.ToString();
             this.txtPeso.Text = persona.Peso.ToString();
-            if (persona.Sexo == "M")
-                this.cmbSexo.Text = "Masculino";
-            else
-                this.cmbSexo.Text = "Femenino";
         }
         private void btnCargar_Click(object sender, EventArgs e)
         {
@@ -69,6 +63,14 @@ namespace CRUD
             TIC.DatosPersonas persona = new TIC.DatosPersonas();
             persona = TIC.DatoPersonasDAO.getPersona(cedula);
             this.cargarPersona(persona);
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

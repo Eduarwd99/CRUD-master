@@ -25,7 +25,6 @@ namespace CRUD
         {
             DataTable dt = TIC.DatoPersonasDAO.getAll();
             this.dgPersonas.DataSource = dt;
-            
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -196,6 +195,11 @@ namespace CRUD
                 FM.txtPesoMod.Text = DP.Peso.ToString();
                 FM.ShowDialog(); //Mostrar formulario como tipo dialogo
             }
+        }
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            frmBusqueda FB = new frmBusqueda();
+            FB.ShowDialog();
         }
         private void cmbSexo_SelectedIndexChanged(object sender, EventArgs e)
         {

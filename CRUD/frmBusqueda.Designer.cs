@@ -30,7 +30,6 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtFechaNacimineto = new System.Windows.Forms.DateTimePicker();
-            this.cmbSexo = new System.Windows.Forms.ComboBox();
             this.txtPeso = new System.Windows.Forms.TextBox();
             this.txtEstatura = new System.Windows.Forms.TextBox();
             this.txtCorreo = new System.Windows.Forms.TextBox();
@@ -46,15 +45,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbCedula = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.btnCargar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtSexo = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtSexo);
             this.groupBox1.Controls.Add(this.dtFechaNacimineto);
-            this.groupBox1.Controls.Add(this.cmbSexo);
             this.groupBox1.Controls.Add(this.txtPeso);
             this.groupBox1.Controls.Add(this.txtEstatura);
             this.groupBox1.Controls.Add(this.txtCorreo);
@@ -86,69 +87,69 @@
             this.dtFechaNacimineto.Size = new System.Drawing.Size(189, 20);
             this.dtFechaNacimineto.TabIndex = 32;
             // 
-            // cmbSexo
-            // 
-            this.cmbSexo.FormattingEnabled = true;
-            this.cmbSexo.Items.AddRange(new object[] {
-            "Masculino",
-            "Femenino"});
-            this.cmbSexo.Location = new System.Drawing.Point(39, 104);
-            this.cmbSexo.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbSexo.Name = "cmbSexo";
-            this.cmbSexo.Size = new System.Drawing.Size(265, 21);
-            this.cmbSexo.TabIndex = 31;
-            // 
             // txtPeso
             // 
+            this.txtPeso.BackColor = System.Drawing.SystemColors.Window;
             this.txtPeso.Location = new System.Drawing.Point(39, 205);
             this.txtPeso.Margin = new System.Windows.Forms.Padding(2);
             this.txtPeso.MaxLength = 6;
             this.txtPeso.Name = "txtPeso";
+            this.txtPeso.ReadOnly = true;
             this.txtPeso.Size = new System.Drawing.Size(265, 20);
             this.txtPeso.TabIndex = 30;
             // 
             // txtEstatura
             // 
-            this.txtEstatura.Location = new System.Drawing.Point(59, 181);
+            this.txtEstatura.BackColor = System.Drawing.SystemColors.Window;
+            this.txtEstatura.Location = new System.Drawing.Point(51, 181);
             this.txtEstatura.Margin = new System.Windows.Forms.Padding(2);
             this.txtEstatura.MaxLength = 3;
             this.txtEstatura.Name = "txtEstatura";
-            this.txtEstatura.Size = new System.Drawing.Size(246, 20);
+            this.txtEstatura.ReadOnly = true;
+            this.txtEstatura.Size = new System.Drawing.Size(254, 20);
             this.txtEstatura.TabIndex = 29;
             // 
             // txtCorreo
             // 
+            this.txtCorreo.BackColor = System.Drawing.SystemColors.Window;
             this.txtCorreo.Location = new System.Drawing.Point(47, 157);
             this.txtCorreo.Margin = new System.Windows.Forms.Padding(2);
             this.txtCorreo.MaxLength = 60;
             this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.ReadOnly = true;
             this.txtCorreo.Size = new System.Drawing.Size(258, 20);
             this.txtCorreo.TabIndex = 28;
             // 
             // txtNombres
             // 
-            this.txtNombres.Location = new System.Drawing.Point(59, 76);
+            this.txtNombres.BackColor = System.Drawing.SystemColors.Window;
+            this.txtNombres.Location = new System.Drawing.Point(58, 77);
             this.txtNombres.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombres.MaxLength = 30;
             this.txtNombres.Name = "txtNombres";
-            this.txtNombres.Size = new System.Drawing.Size(245, 20);
+            this.txtNombres.ReadOnly = true;
+            this.txtNombres.Size = new System.Drawing.Size(246, 20);
             this.txtNombres.TabIndex = 27;
             // 
             // txtApellidos
             // 
-            this.txtApellidos.Location = new System.Drawing.Point(59, 53);
+            this.txtApellidos.BackColor = System.Drawing.SystemColors.Window;
+            this.txtApellidos.Location = new System.Drawing.Point(58, 50);
             this.txtApellidos.Margin = new System.Windows.Forms.Padding(2);
             this.txtApellidos.MaxLength = 30;
             this.txtApellidos.Name = "txtApellidos";
-            this.txtApellidos.Size = new System.Drawing.Size(245, 20);
+            this.txtApellidos.ReadOnly = true;
+            this.txtApellidos.Size = new System.Drawing.Size(246, 20);
             this.txtApellidos.TabIndex = 26;
             // 
             // txtCedula
             // 
-            this.txtCedula.Location = new System.Drawing.Point(51, 27);
+            this.txtCedula.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCedula.Location = new System.Drawing.Point(49, 24);
             this.txtCedula.Margin = new System.Windows.Forms.Padding(2);
             this.txtCedula.MaxLength = 10;
             this.txtCedula.Name = "txtCedula";
+            this.txtCedula.ReadOnly = true;
             this.txtCedula.Size = new System.Drawing.Size(254, 20);
             this.txtCedula.TabIndex = 25;
             // 
@@ -205,7 +206,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 76);
+            this.label3.Location = new System.Drawing.Point(5, 80);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
@@ -237,41 +238,68 @@
             this.cmbCedula.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cmbCedula.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbCedula.FormattingEnabled = true;
-            this.cmbCedula.Location = new System.Drawing.Point(181, 6);
+            this.cmbCedula.Location = new System.Drawing.Point(85, 6);
             this.cmbCedula.Name = "cmbCedula";
-            this.cmbCedula.Size = new System.Drawing.Size(146, 21);
+            this.cmbCedula.Size = new System.Drawing.Size(242, 21);
             this.cmbCedula.TabIndex = 2;
             this.cmbCedula.SelectedIndexChanged += new System.EventHandler(this.cmbCedula_SelectedIndexChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(10, 9);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(165, 13);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "Seleccione a la parsona a buscar";
             // 
             // btnCargar
             // 
             this.btnCargar.Location = new System.Drawing.Point(13, 275);
             this.btnCargar.Name = "btnCargar";
-            this.btnCargar.Size = new System.Drawing.Size(114, 23);
+            this.btnCargar.Size = new System.Drawing.Size(142, 23);
             this.btnCargar.TabIndex = 4;
             this.btnCargar.Text = "Cargar";
             this.btnCargar.UseVisualStyleBackColor = true;
             this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(181, 274);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(146, 24);
+            this.button1.TabIndex = 35;
+            this.button1.Text = "Cerrar ";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtSexo
+            // 
+            this.txtSexo.BackColor = System.Drawing.SystemColors.Window;
+            this.txtSexo.Location = new System.Drawing.Point(39, 103);
+            this.txtSexo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSexo.MaxLength = 30;
+            this.txtSexo.Name = "txtSexo";
+            this.txtSexo.ReadOnly = true;
+            this.txtSexo.Size = new System.Drawing.Size(265, 20);
+            this.txtSexo.TabIndex = 33;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(18, 9);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(61, 13);
+            this.label9.TabIndex = 36;
+            this.label9.Text = "BUSCAR:";
+            // 
             // frmBusqueda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 310);
-            this.Controls.Add(this.btnCargar);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(334, 310);
+            this.ControlBox = false;
             this.Controls.Add(this.label9);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.cmbCedula);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmBusqueda";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Busqueda de Personas";
             this.Load += new System.EventHandler(this.frmBusqueda_Load);
             this.groupBox1.ResumeLayout(false);
@@ -284,7 +312,6 @@
         #endregion
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DateTimePicker dtFechaNacimineto;
-        private System.Windows.Forms.ComboBox cmbSexo;
         private System.Windows.Forms.TextBox txtPeso;
         private System.Windows.Forms.TextBox txtEstatura;
         private System.Windows.Forms.TextBox txtCorreo;
@@ -300,7 +327,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbCedula;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnCargar;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtSexo;
+        private System.Windows.Forms.Label label9;
     }
 }
