@@ -19,7 +19,9 @@ namespace CRUD
         }
         private void frmBusqueda_Load(object sender, EventArgs e)
         {
+            this.cmbCedula.SelectedIndexChanged -= new System.EventHandler(this.cmbCedula_SelectedIndexChanged);
             this.cargaComboPersona();
+            this.cmbCedula.SelectedIndexChanged += new System.EventHandler(this.cmbCedula_SelectedIndexChanged);
         }
         private void cargaComboPersona()
         {
