@@ -105,6 +105,12 @@
     <Compile Include="FrmModificarMaterias.Designer.cs">
       <DependentUpon>FrmModificarMaterias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Informes\frmInformePersonas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Informes\frmInformePersonas.Designer.cs">
+      <DependentUpon>frmInformePersonas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\DatoPersonasDAO.cs" />
     <Compile Include="Modelo\DatosMaterias.cs" />
     <Compile Include="Modelo\DatosMateriasDAO.cs" />
@@ -130,6 +136,10 @@
     <EmbeddedResource Include="FrmModificarMaterias.resx">
       <DependentUpon>FrmModificarMaterias.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Informes\frmInformePersonas.resx">
+      <DependentUpon>frmInformePersonas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Informes\rptPersonas.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -179,8 +189,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Informes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
