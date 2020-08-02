@@ -11,7 +11,7 @@ namespace TIC
 {
     public static class DatoPersonasDAO
     {
-        private static String cadenaConexion = @"server=PC; database=TI2020; user id=Eduardo.Arizala; password=1234";
+        private static String cadenaConexion = @"server=PC; database=TI2020; user id=sa; password=admin1234";
         public static int creacion(DatosPersonas datosPersonas)
         {
             // 1) Configurar la  conexion de datos con una fuente de datos 
